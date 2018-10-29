@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RealEstateMapp</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
+
+
+  </head>
+  <body>
+    <%= render 'layouts/nav' %>
+
+    <div class="container py-5">
+
+<!--  -->
+      <% if notice != nil %>
+        <h4 class="text-center alert-success"><%= notice %></h4>
+      <% end %>
+
+
+      <% if alert != nil %>
+        <h4 class="text-center alert-danger"><%= alert %></h4>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
+  </body>
+</html>
