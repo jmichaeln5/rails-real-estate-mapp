@@ -7,19 +7,44 @@
 
     <div class="navbar-nav">
 
-      <% if user_signed_in?  %>
+      <% if current_buyer %>
 
-        <%= link_to "Hello #{current_user.email}", user_path(current_user), class:"nav-item nav-link" %>
-
-
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"nav-item nav-link" %>
-
-      <% else  %>
+      <%= link_to "Welcome #{current_buyer.email}", buyer_path(current_buyer), class:"nav-item nav-link" %>
 
       <%= link_to 'Home', root_url, class:"nav-item nav-link" %>
-      <%= link_to 'Login', new_user_session_path, class:"nav-item nav-link" %>
-      <%= link_to 'Sign Up', new_user_registration_path, class:"nav-item nav-link" %>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/buyer_logout"> Logout </a>
+      </li>
+
+      <% elsif current_seller %>
+
+      <%= link_to "Welcome #{current_seller.email}", seller_path(current_seller), class:"nav-item nav-link" %>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/seller_logout"> Logout </a>
+      </li>
+
+      <% else %>
+
+      <li class="nav-item">
+        <%= link_to 'Buyer Login', '/buyer_login', class:"nav-link" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to 'Buyer Signup', '/buyer_signup', class:"nav-link" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to 'Seller Login', '/seller_login', class:"nav-link" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to 'Seller Signup', '/seller_signup', class:"nav-link" %>
+      </li>
+
       <% end %>
+
 
     </div>
   </div>
