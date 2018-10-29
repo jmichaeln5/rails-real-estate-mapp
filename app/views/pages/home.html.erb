@@ -7,8 +7,6 @@
           <h1 class="display-4">RealEstate</h1>
           <h1 class="display-4">Mapp</h1>
 
-          <%# if user_signed_in? == false %>
-
           <div class="btn-group">
 
               <%= link_to 'Buyer Login', '/buyer_login', class:"btn btn-success" %>
@@ -19,13 +17,34 @@
           <br>
           <br>
           <div class="btn-group">
+
             <%= link_to 'Seller Login', '/seller_login', class:"btn btn-success" %>
 
             <%= link_to 'Seller Signup', '/seller_signup', class:"btn btn-primary" %>
 
           </div>
 
-          <%# end  %>
+          <br>
+          <br>
+          <br>
+          <div class="card">
+            <div class="container">
+
+            <br>
+            <%= link_to "View Buyers", buyers_path, class:"btn btn-success" %>
+            </div>
+
+            <br>
+
+            <div class="container">
+              <br>
+            <%= link_to "View Sellers", sellers_path, class:"btn btn-primary" %>
+            </div>
+
+            <br>
+          </div>
+
+
 
         </div>
       </div>
@@ -48,8 +67,6 @@
             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
           </div>
         </div>
-
-        <hr>
 
       </div> <!-- /container -->
 

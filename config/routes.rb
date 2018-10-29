@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :buyers
-  resources :sellers
   root 'pages#home'
 
-
+  resources :buyers
+  resources :sellers
 
   # get '/login' => 'sessions#new'
   # post '/login' => 'sessions#create'
