@@ -11,7 +11,7 @@
 
       <%= link_to "Welcome #{current_buyer.email}", buyer_path(current_buyer), class:"nav-item nav-link" %>
 
-      <%= link_to 'Home', root_url, class:"nav-item nav-link" %>
+      <%= link_to 'Home', buyer_path(current_buyer), class:"nav-item nav-link" %>
 
       <li class="nav-item">
         <a class="nav-link" href="/buyer_logout"> Logout </a>
@@ -21,13 +21,22 @@
 
       <%= link_to "Welcome #{current_seller.email}", seller_path(current_seller), class:"nav-item nav-link" %>
 
+      <%= link_to 'Home', seller_path(current_seller), class:"nav-item nav-link" %>
+
+
       <li class="nav-item">
         <a class="nav-link" href="/seller_logout"> Logout </a>
       </li>
 
       <% else %>
 
-      <li class="nav-item">
+      <%= link_to 'Home', root_url, class:"nav-item nav-link" %>
+
+      <%= link_to 'About', about_path, class:"nav-item nav-link" %>
+
+
+
+      <!-- <li class="nav-item">
         <%= link_to 'Buyer Login', '/buyer_login', class:"nav-link" %>
       </li>
 
@@ -41,7 +50,7 @@
 
       <li class="nav-item">
         <%= link_to 'Seller Signup', '/seller_signup', class:"nav-link" %>
-      </li>
+      </li> -->
 
       <% end %>
 

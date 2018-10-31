@@ -7,38 +7,114 @@
           <h1 class="display-4">RealEstate</h1>
           <h1 class="display-4">Mapp</h1>
 
+          <br>
+          <br>
+
           <div class="btn-group">
 
-              <%= link_to 'Buyer Login', '/buyer_login', class:"btn btn-success" %>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#e1">
+              Login
+            </button>
 
-              <%= link_to 'Buyer Signup', '/buyer_signup', class:"btn btn-primary" %>
+            <!-- Modal -->
+            <div class="modal fade" id="e1" tabindex="-1" role="dialog" aria-labelledby="e1Label" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
 
+                    <h1 class="display-4"> <strong> Login </strong></h1>
+                    <hr>
+                    <!-- <h1 class="display-4"> I am Looking to...</h1> -->
+                    <div class="btn-group">
+                    <div>
+                      <i class="fas fa-search-plus fa-4x"></i>
+                      <br>
+                    <h2><%= link_to 'Login to Search', '/buyer_login'%></h2>
+                    </div>
+                    <div class="pl-5">
+                      <i class="fas fa-pencil-alt fa-4x"></i>
+                      <br>
+                      <h2><%= link_to 'Login to Post', '/seller_login' %> </h2>
+                    </div>
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<!--  -->
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#e2">
+            Sign Up
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="e2" tabindex="-1" role="dialog" aria-labelledby="e2Label" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="e2Label">SignUp</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+                  <h1 class="display-4"> <strong> SignUp </strong></h1>
+                  <hr>
+                  <h1 class="display-4"> I am interested in...</h1>
+                  <div class="btn-group">
+                  <div>
+                    <i class="fas fa-search-plus fa-4x"></i>
+                    <br>
+                  <h2><%= link_to 'Searching for Listings', '/buyer_login'%></h2>
+                  </div>
+                  <div class="pl-5">
+                    <i class="fas fa-pencil-alt fa-4x"></i>
+                    <br>
+
+                    <h2><%= link_to 'Posting Listings', '/seller_login' %></h2>
+                  </div>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <br>
-          <br>
-          <div class="btn-group">
 
-            <%= link_to 'Seller Login', '/seller_login', class:"btn btn-success" %>
 
-            <%= link_to 'Seller Signup', '/seller_signup', class:"btn btn-primary" %>
 
-          </div>
+
+
+
+</div>
+
 
           <br>
           <br>
           <br>
+
           <div class="card">
             <div class="container">
 
             <br>
-            <%= link_to "View Buyers", buyers_path, class:"btn btn-success" %>
-            </div>
-
+            <%= link_to "View Buyers", buyers_path %>
             <br>
-
-            <div class="container">
-              <br>
-            <%= link_to "View Sellers", sellers_path, class:"btn btn-primary" %>
+            <hr>
+            <%= link_to "View Sellers", sellers_path %>
             </div>
 
             <br>
@@ -48,6 +124,14 @@
 
         </div>
       </div>
+
+
+      <!--  -->
+      <!--  -->
+      <!--  -->
+
+
+
       <div class="container">
         <!-- Example row of columns -->
         <div class="row">
