@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   root 'pages#home'
   get '/about' => 'pages#about'
 
-
-
   resources :buyers
-  resources :sellers
+
+  resources :sellers do
+    resources :listings, only: [:index, :new, :create]
+  end
+  resources :listings, only: [:show, :edit, :update, :destroy]
+
 
   # get '/login' => 'sessions#new'
   # post '/login' => 'sessions#create'
@@ -14,8 +17,6 @@ Rails.application.routes.draw do
   #
   # get '/signup' => 'users#new'
   # post '/users' => 'users#create'
-
-
 
   get '/buyer_login' => 'buyer_sessions#new'
   post '/buyer_login' => 'buyer_sessions#create'

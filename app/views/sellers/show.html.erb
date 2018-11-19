@@ -1,4 +1,13 @@
-Welcome  <%= @seller.email %>
-<br>
-<%= link_to 'Edit', edit_seller_path(@seller) %> |
-<%= link_to 'Back', sellers_path %>
+<div class="text-center">
+
+  <h1>Welcome  <%= @seller.email %> </h1>
+  <br>
+
+  <h4 class="card">
+    <br>
+    <%= link_to "Listings", seller_listings_path(current_seller)%>
+    <br>
+  </h4>
+
+
+</div>

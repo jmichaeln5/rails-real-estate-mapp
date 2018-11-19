@@ -10,7 +10,7 @@ class SellerSessionsController < ApplicationController
         # Save the seller id inside the browser cookie. This is how we keep the seller
         # logged in when they navigate around our website.
         session[:seller_id] = seller.id
-        redirect_to current_seller
+        redirect_to current_seller, :notice => "Logged in successfully."
       else
         flash[:login_errors] = ['Invalid credentials, please try again.']
         # redirect_to sellers_index_path
