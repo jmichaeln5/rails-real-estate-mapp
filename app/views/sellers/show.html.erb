@@ -3,11 +3,16 @@
   <h1>Welcome  <%= @seller.email %> </h1>
   <br>
 
-  <h4 class="card">
+  <div class="card">
     <br>
-    <%= link_to "Listings", seller_listings_path(current_seller)%>
+    <%= link_to "Listings", seller_listings_path(current_seller), class:"display-4"%>
     <br>
-  </h4>
+
+  <% @listings.each do |listing| %>
+  <%= listing.address %>
+  <% end %>
+
+  </div>
 
 
 </div>

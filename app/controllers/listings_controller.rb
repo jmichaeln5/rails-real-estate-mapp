@@ -1,17 +1,19 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_seller, only: [:show, :edit, :update, :destroy]
 
   # GET /listings
   # GET /listings.json
   def index
     @seller = current_seller
     # @buyer = current_buyer
-    @listings = Listing.where(seller_id: current_seller ).order("created_at DESC")
+    @listings = @seller.listings
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @listings = @seller.listings
   end
 
   # GET /listings/new
@@ -60,7 +62,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to current_seller, notice: 'Listing was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +71,10 @@ class ListingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
       @listing = Listing.find(params[:id])
+    end
+
+    def set_seller
+      @seller = current_seller
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,6 +1,102 @@
-<h1>Editing Listing</h1>
+<div class="text-center">
+  <div class="card">
+<br>
+  <p class="display-4"> Edit Listing</p>
+  <%= form_with(model: @listing, local: true) do |form| %>
 
-<%= render 'form', listing: @listing %>
+  <% if @listing.errors.any? %>
+    <div id="error_explanation">
+      <h5><%= pluralize(@listing.errors.count, "error") %> prohibited this @listing from being saved:</h5>
 
-<%= link_to 'Show', @listing %> |
-<%= link_to 'Back', :back %>
+      <ul>
+      <% @listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+      <%= form.hidden_field :seller_id, id: :seller_id, value: @seller.id %>
+  </div>
+
+
+  <!-- <div>
+    <%= "Seller ID" %>
+    <br>
+    <%= current_seller.id %>
+    <br>
+    <% form.label :seller_id %>
+    <% form.text_area :seller_id, id: :current_seller_id %>
+  </div> -->
+
+  <div class="container">
+  <hr>
+  </div>
+  <br>
+  <h5> <strong>Address:</strong> </h5>
+
+  <div class="field">
+    <%= form.label :address, class: "hidden" %>
+    <%= form.text_field :address, placeholder: 'Address' %>
+
+    <%= form.label :city, class: "hidden"  %>
+    <%= form.text_field :city, placeholder: 'City' %>
+
+    <%= form.label :state, class: "hidden"  %>
+    <%= form.text_field :state, placeholder: 'State' %>
+
+    <%= form.label :zip, class: "hidden"  %>
+    <%= form.number_field :zip, placeholder: 'ZIP' %>
+  </div>
+
+  <div class="container">
+  <hr>
+  </div>
+
+
+<strong >(Completely Optional)</strong>
+<br>
+<br>
+  <div class="field">
+    <h5> <strong>Latitude:</strong> </h5>
+    <%= form.label :latitude, class:"hidden" %>
+    <%= form.text_field :latitude, placeholder: '40.673180' %>
+  </div>
+
+  <div class="field">
+    <h5> <strong>Longitude:</strong> </h5>
+    <%= form.label :longitude, class:"hidden" %>
+    <%= form.text_field :longitude, placeholder: '73.972878' %>
+  </div>
+
+  <div class="container">
+  <hr>
+  </div>
+
+  <div class="field">
+    <h5> <strong>Description:</strong> </h5>
+    <%= form.label :description, class:"hidden" %>
+    <br>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="container">
+  <hr>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-success" %>
+  </div>
+<% end %>
+<div>
+  <hr>
+<%= link_to 'Back', :back, class:"btn btn-primary" %>
+<br>
+<br>
+</div>
+
+
+</div>
+</div>

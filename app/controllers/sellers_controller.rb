@@ -10,6 +10,8 @@ class SellersController < ApplicationController
 
   def show
     @seller = current_seller
+    @listings = Listing.where(seller_id: current_seller.id ).order("created_at DESC")
+
   end
 
   def new

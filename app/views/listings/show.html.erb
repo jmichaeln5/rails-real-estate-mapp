@@ -1,39 +1,57 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+
+  <strong>Address:</strong>
+
+  <%= @listing.full_street_address %>
+
+  <p>
+    <strong>Latitude:</strong>
+    <%= @listing.latitude %>
+  <br>
+    <strong>Longitude:</strong>
+    <%= @listing.longitude %>
+  </p>
+
+
+
+  <!-- <%= @listing.address %>
+
+  <%= @listing.city %>
+
+  <%= @listing.state %>
+
+  <%= @listing.zip %> -->
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @listing.description %>
 </p>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @listing.latitude %>
-</p>
+<div id="map"></div>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @listing.longitude %>
-</p>
+<script>
+var lat = <%= @listing.lat %>;
+var lng = <%= @listing.lng %>;
 
-<p>
-  <strong>Address:</strong>
-  <%= @listing.address %>
-</p>
+// Initialize and add the map
+function initMap() {
+// The location of Uluru
+var uluru = {lat, lng};
+// The map, centered at Uluru
+var map = new google.maps.Map(
+  document.getElementById('map'), {zoom: 16, center: uluru});
+// The marker, positioned at Uluru
+var marker = new google.maps.Marker({position: uluru, map: map});
+}
+</script>
 
-<p>
-  <strong>City:</strong>
-  <%= @listing.city %>
-</p>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUrlQaMPYAMf2W6vaHFF7ufv-Bp6A7dZo&callback=initMap">
+</script>
 
-<p>
-  <strong>State:</strong>
-  <%= @listing.state %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @listing.zip %>
-</p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
+<%= link_to 'Back', :back %>
