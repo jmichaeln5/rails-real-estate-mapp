@@ -1,0 +1,97 @@
+
+<div class="card container">
+  <div class="text-center">
+    <br>
+    <div class="display-4"> Directions</div>
+    <br>
+    <hr>
+
+    <div id="floating-panel">
+
+      <b>Start: </b>
+      <select id="start">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @listings.order("created_at DESC").each do |listing| %>
+            <tr>
+              <td>
+                <option value="<%= listing.full_street_address %>"><%= listing.address %></option>
+
+                <br>
+                <!-- Lat/Lng: <%#= listing.lat %>, <%#= listing.lng %> -->
+                <br>
+                <br>
+
+                <hr>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </select>
+
+    <b>End: </b>
+    <select id="end">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @listings.order("created_at DESC").each do |listing| %>
+          <tr>
+            <td>
+              <option value="<%= listing.full_street_address %>">
+                <%= listing.address %>
+              </option>
+
+              <br>
+              Lat/Lng: <%= listing.lat %>, <%= listing.lng %>
+              <br>
+              <br>
+
+              <hr>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </select>
+
+
+    </div>
+
+    <br>
+
+    <div id="map"></div>
+    <div id="right-panel"></div>
+
+    <!-- Replace the value of the key parameter with your own API key. -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyCb7XJAeWDd5AXTQpyjeYIU93Gc7CfUpVk&callback=initMap">
+    </script>
+
+    <script>
+    let lat = <%= @listings.first.lat %>;
+    let lng = <%= @listings.first.lng %>;
+    </script>
+
+
+    <hr>
+    <br>
+    <!--  -->
+
+    <%= link_to 'Back', :back %>
+
+    <br>
+    <br>
+  </div>
+</div>

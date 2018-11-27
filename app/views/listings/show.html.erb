@@ -1,18 +1,26 @@
+<div class="card container">
+
 <p id="notice"><%= notice %></p>
 
-<p>
+<div class="display-4 text-center"> Listing </div>
+<hr>
+<div class="text-center">
+<%= link_to 'Edit Listing', edit_listing_path(@listing), class:"btn btn-outline-secondary btn-sm" %>
+<hr>
 
+
+<p>
   <strong>Address:</strong>
 
   <%= @listing.full_street_address %>
 
-  <p>
+  <!-- <p>
     <strong>Latitude:</strong>
     <%= @listing.latitude %>
   <br>
     <strong>Longitude:</strong>
     <%= @listing.longitude %>
-  </p>
+  </p> -->
 
 
 
@@ -52,6 +60,11 @@ var marker = new google.maps.Marker({position: uluru, map: map});
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUrlQaMPYAMf2W6vaHFF7ufv-Bp6A7dZo&callback=initMap">
 </script>
 
+<br>
+<hr>
+<div class="text-center">
+<%= link_to 'Back', :back, class:"btn btn-primary" %>
+</div>
+<br>
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', :back %>
+</div>
