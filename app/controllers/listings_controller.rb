@@ -2,6 +2,11 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
   before_action :set_seller, only: [:show, :edit, :update, :destroy]
 
+  def total_listings
+    @listings = Listing.all
+  end
+
+
   # GET /listings
   # GET /listings.json
   def index

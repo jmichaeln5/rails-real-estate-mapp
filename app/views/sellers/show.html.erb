@@ -5,13 +5,17 @@
   <div class="card">
     <br>
     <%= link_to "Listings", seller_listings_path(current_seller), class:"display-4"%>
-    <br>
 
-  <% @listings.each do |listing| %>
-  <%= listing.address %>
-  <% end %>
+    <div class="container">
 
+      <hr>
+      <br>
+      <% @listings.each do |listing| %>
+      <%= listing.address %>
+      <br>
+      <% end %>
+      <br>
+
+    </div>
   </div>
-
-
 </div>

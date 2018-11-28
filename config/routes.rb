@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :listings, only: [:index, :new, :create]
   end
   resources :listings, only: [:show, :edit, :update, :destroy]
+  get '/listings' => 'listings#total_listings'
 
 
   # get '/login' => 'sessions#new'
