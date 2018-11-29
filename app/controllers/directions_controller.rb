@@ -2,7 +2,7 @@ class DirectionsController < ApplicationController
 
   def index
     @seller = current_seller
-    @listings = @seller.listings
+    @listings = Listing.all
   end
 
 end

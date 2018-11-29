@@ -1,0 +1,16 @@
+<p class="display-4">All Listings</p>
+<hr>
+
+<% @listings.each do |listing| %>
+
+<strong><%= link_to "#{listing.address}", listing %></strong>
+
+<br>
+
+Listed by: <strong><%= link_to "#{listing.seller.email}", listing.seller %></strong>
+
+<br>
+<hr>
+<br>
+
+<% end %>

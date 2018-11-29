@@ -2,15 +2,15 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
   before_action :set_seller, only: [:show, :edit, :update, :destroy]
 
-  def total_listings
-    @listings = Listing.all
+  def all_listings
+    @listings = Listing.all.order("created_at DESC")
   end
 
 
   # GET /listings
   # GET /listings.json
   def index
-    @seller = current_seller
+    @seller = Seller.find(params[:seller_id])
     # @buyer = current_buyer
     @listings = @seller.listings
   end
@@ -18,7 +18,8 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
-    @listings = @seller.listings
+    # @seller = Seller.find(params[:seller_id])
+    @listings = Listing.find(params[:id])
   end
 
   # GET /listings/new

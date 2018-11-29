@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get '/buyer_signup' => 'buyers#new'
   post '/buyers' => 'buyers#create'
 
-
   get '/seller_login' =>   'seller_sessions#new'
   post '/seller_login' =>   'seller_sessions#create'
   get '/seller_logout' =>   'seller_sessions#destroy'
@@ -26,7 +25,8 @@ Rails.application.routes.draw do
     resources :listings, only: [:index, :new, :create]
   end
   resources :listings, only: [:show, :edit, :update, :destroy]
-  get '/listings' => 'listings#total_listings'
+
+  get '/listings' => 'listings#all_listings'
 
 
   # get '/login' => 'sessions#new'

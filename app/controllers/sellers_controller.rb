@@ -1,7 +1,6 @@
 class SellersController < ApplicationController
   before_action :set_seller, only: [:show, :edit, :update, :destroy]
 
-
   def index
     @sellers = Seller.all
     # @restaurants = Restaurant.where(seller_id: @seller).paginate(page: params[:page]).order("created_at DESC")
@@ -9,8 +8,8 @@ class SellersController < ApplicationController
   end
 
   def show
-    @seller = current_seller
-    @listings = Listing.where(seller_id: current_seller.id ).order("created_at DESC")
+    @seller = Seller.find(params[:id])
+    @listings = Listing.where(seller_id: @seller.id ).order("created_at DESC")
 
   end
 

@@ -3,15 +3,23 @@
   <br>
 
   <div class="card">
-    <br>
-    <%= link_to "Listings", seller_listings_path(current_seller), class:"display-4"%>
+
+    <p class="display-4"> Sellers#show</p>
+    <hr>
+    <p class="display-4"> <%= @seller.email%>'s Listings</p>
 
     <div class="container">
 
       <hr>
+
+      <% if current_seller = Seller.find(params[:id]) %>
+        <%= link_to "Post Listing", new_seller_listing_path(@seller), class:"btn btn-success" %>
+        <hr>
+      <% end %>
+
       <br>
       <% @listings.each do |listing| %>
-      <%= listing.address %>
+      <%= link_to "#{listing.address}", listing %>
       <br>
       <% end %>
       <br>
