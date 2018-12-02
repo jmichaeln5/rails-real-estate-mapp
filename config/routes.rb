@@ -3,19 +3,21 @@ Rails.application.routes.draw do
   root 'pages#home'
   get '/about' => 'pages#about'
 
-  get '/buyer_login' => 'buyer_sessions#new'
-  post '/buyer_login' => 'buyer_sessions#create'
-  get '/buyer_logout' => 'buyer_sessions#destroy'
+  get '/seller_signup' => 'sellers#new'
+  post '/sellers' => 'sellers#create'
 
   get '/buyer_signup' => 'buyers#new'
   post '/buyers' => 'buyers#create'
 
-  get '/seller_login' =>   'seller_sessions#new'
-  post '/seller_login' =>   'seller_sessions#create'
-  get '/seller_logout' =>   'seller_sessions#destroy'
 
-  get '/seller_signup' => 'sellers#new'
-  post '/sellers' => 'sellers#create'
+
+
+
+
+  get '/login' =>   'sessions#new'
+  post '/login' =>   'sessions#create_seller'
+  post '/login' =>   'sessions#create_buyer'
+  get '/logout' => 'sessions#destroy'
 
   get '/directions' => 'directions#index'
 

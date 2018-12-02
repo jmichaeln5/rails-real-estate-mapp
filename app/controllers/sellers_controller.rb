@@ -21,7 +21,6 @@ class SellersController < ApplicationController
   end
 
   def create
-
     # seller = Seller.new(seller_params)
     @seller = Seller.new(seller_params)
 
