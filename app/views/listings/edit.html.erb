@@ -2,6 +2,17 @@
   <div class="card">
 <br>
   <p class="display-4"> Edit Listing</p>
+
+
+  <div>
+<hr>
+  <%= link_to 'Delete', @listing, :method => :delete, data:{confirm: "Are you sure you would like to delete this listing forever?"}, class:"btn btn-lg btn-danger" %>
+
+<hr>
+</div>
+
+
+
   <%= form_with(model: @listing, local: true) do |form| %>
 
   <% if @listing.errors.any? %>
@@ -30,11 +41,6 @@
     <% form.label :seller_id %>
     <% form.text_area :seller_id, id: :current_seller_id %>
   </div> -->
-
-  <div class="container">
-  <hr>
-  </div>
-  <br>
   <h5> <strong>Address:</strong> </h5>
 
   <div class="field">

@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_action :set_seller, only: [:show, :edit, :update, :destroy]
+  before_action :set_seller, only: [:all_listings, :show, :edit, :update, :destroy]
 
   def all_listings
     @listings = Listing.all.order("created_at DESC")

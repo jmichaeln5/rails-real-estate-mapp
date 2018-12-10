@@ -1,16 +1,129 @@
-<p class="display-4">All Listings</p>
+<div class="text-center">
+
+  <div class="card">
+<br>
+    <p class="display-4"> All Listings </p>
+    <hr>
+
+    <div class="container">
+
+      <hr>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
+        View All Listings
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> All Listings</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="display-4"> All Listings </p>
 <hr>
+              <% @listings.each do |listing| %>
 
-<% @listings.each do |listing| %>
+                <h3><%= link_to "#{listing.address}", listing %> </h3>
+                  listed by <%= link_to "#{listing.seller.email}", @seller %>
+              <% end %>
+              <br>
 
-<strong><%= link_to "#{listing.address}", listing %></strong>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<br>
+      <hr>
+      <br>
 
-Listed by: <strong><%= link_to "#{listing.seller.email}", listing.seller %></strong>
+      <div id="map"></div>
 
-<br>
-<hr>
-<br>
+      <br>
 
-<% end %>
+      <script>
+            function initMap() {
+
+              var lat = 38.812016;
+              var lng = -97.504928 ;
+
+              var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 3.5,
+                center: {lat, lng}
+              });
+
+              // Create an array of alphabetical characters used to label the markers.
+              var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+              // Add some markers to the map.
+              // Note: The code uses the JavaScript Array.prototype.map() method to
+              // create an array of markers based on a given "locations" array.
+              // The map() method here has nothing to do with the Google Maps API.
+              var markers = locations.map(function(location, i) {
+                return new google.maps.Marker({
+                  position: location,
+                  label: labels[i % labels.length]
+                });
+              });
+
+              // Add a marker clusterer to manage the markers.
+              var markerCluster = new MarkerClusterer(map, markers,
+                  {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+            }
+
+
+            // <% @listings.each do |location| %>
+            //
+            //   var lat = <%= location.lat %>;
+            //   var lng = <%= location.lng %>;
+            //
+            // var locations = [
+            //
+            //
+            //   {lat, lng},
+            //   {lat, lng},
+            //   {lat, lng},
+            //
+            // ]
+            //
+            // <% end %>
+            //
+
+            var locations = []
+
+            <% @listings.each do |location| %>
+
+              var lat = <%= location.lat %>;
+              var lng = <%= location.lng %>;
+
+              locations.push({"lat":lat,"lng":lng})
+
+            <% end %>
+
+      </script>
+
+      <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+      </script>
+
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyCb7XJAeWDd5AXTQpyjeYIU93Gc7CfUpVk&callback=initMap">
+      </script>
+
+      <div class="text-center">
+      <%= link_to 'Back', :back, class:"btn btn-primary" %>
+      </div>
+      <br>
+
+
+
+    </div>
+  </div>
+</div>

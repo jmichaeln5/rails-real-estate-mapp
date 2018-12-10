@@ -2,17 +2,13 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get '/about' => 'pages#about'
+  get '/test' => 'pages#test'
 
   get '/seller_signup' => 'sellers#new'
   post '/sellers' => 'sellers#create'
 
   get '/buyer_signup' => 'buyers#new'
   post '/buyers' => 'buyers#create'
-
-
-
-
-
 
   get '/login' =>   'sessions#new'
   post '/login' =>   'sessions#create_seller'

@@ -9,8 +9,8 @@ class SellersController < ApplicationController
 
   def show
     @seller = Seller.find(params[:id])
-    @listings = Listing.where(seller_id: @seller.id ).order("created_at DESC")
-
+    @listings = @seller.listings
+    @last_listing = @listings.last
   end
 
   def new

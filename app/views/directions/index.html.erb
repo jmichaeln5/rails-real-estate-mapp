@@ -6,13 +6,13 @@
 
       <select id="start">
         <% @listings.each do |listing|%>
-          <option value="<%=listing.lat%>,<%=listing.lng%>"><%= listing.address  %></option>
+        <option value="<%=listing.lat%>,<%=listing.lng%>">
+          <%= listing.state %>-
+          <%= listing.address %>
+        </option>
           <br>
         <% end %>
       </select>
-
-
-
 
         <br>
         <b>Waypoints:</b>
@@ -21,8 +21,11 @@
         <br>
 
         <select multiple id="waypoints">
-          <% @listings.sort.each do |listing|%>
-            <option value="<%=listing.lat%>,<%=listing.lng%>"><%= listing.address  %></option>
+          <% @listings.each do |listing|%>
+            <option value="<%=listing.lat%>,<%=listing.lng%>">
+              <%= listing.state %>-
+              <%= listing.address %>
+            </option>
             <br>
           <% end %>
         </select>
@@ -32,12 +35,16 @@
         <b>End:</b>
         <select id="end">
           <% @listings.each do |listing|%>
-            <option value="<%=listing.lat%>,<%=listing.lng%>"><%= listing.address  %></option>
+            <option value="<%=listing.lat%>,<%=listing.lng%>">
+              <%= listing.state %>-
+              <%= listing.address %>
+            </option>
             <br>
           <% end %>
         </select>
 
         <br>
+
           <input type="submit" id="submit">
           <div id="directions-panel"></div>
 

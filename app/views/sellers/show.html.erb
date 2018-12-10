@@ -1,9 +1,7 @@
 <div class="text-center">
 
-  <br>
-
   <div class="card">
-
+<br>
     <p class="display-4"> Sellers#show</p>
     <hr>
     <p class="display-4"> <%= @seller.email%>'s Listings</p>
@@ -17,12 +15,150 @@
         <hr>
       <% end %>
 
-      <br>
-      <% @listings.each do |listing| %>
-      <%= link_to "#{listing.address}", listing %>
-      <br>
+
+      <% if @seller.listings.count ==  0 %>
+
+      <h1>  <%= @seller.email.capitalize%>'s Has No Listings.</h1>
+
+      <% else %>
+
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+        View All <%= @seller.email.capitalize%>'s Listings
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> <%= @seller.email%>'s Listings</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <br>
+              <% @listings.each do |listing| %>
+
+              <%= link_to "#{listing.address}", listing %>
+              <br>
+              <% end %>
+              <br>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <% end %>
+
+
+
+      <hr>
       <br>
+
+      <div id="map"></div>
+
+      <br>
+
+      <script>
+            function initMap() {
+
+              <% if @listings.count > 1 %>
+
+              var lat = <%= @last_listing.lat %>;
+              var lng = <%= @last_listing.lng %>;
+
+              var zoom = 9;
+
+              <% else %>
+
+              var lat = 38.812016;
+              var lng = -97.504928 ;
+
+              var zoom = 4;
+
+
+              <% end %>
+
+              //
+              //
+
+
+              var map = new google.maps.Map(document.getElementById('map'), {
+                zoom:zoom,
+                center: {lat, lng}
+              });
+
+              // Create an array of alphabetical characters used to label the markers.
+              var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+              // Add some markers to the map.
+              // Note: The code uses the JavaScript Array.prototype.map() method to
+              // create an array of markers based on a given "locations" array.
+              // The map() method here has nothing to do with the Google Maps API.
+              var markers = locations.map(function(location, i) {
+                return new google.maps.Marker({
+                  position: location,
+                  label: labels[i % labels.length]
+                });
+              });
+
+              // Add a marker clusterer to manage the markers.
+              var markerCluster = new MarkerClusterer(map, markers,
+                  {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+            }
+
+
+            // <% @listings.each do |location| %>
+            //
+            //   var lat = <%= location.lat %>;
+            //   var lng = <%= location.lng %>;
+            //
+            // var locations = [
+            //
+            //
+            //   {lat, lng},
+            //   {lat, lng},
+            //   {lat, lng},
+            //
+            // ]
+            //
+            // <% end %>
+            //
+
+            var locations = []
+
+            <% @listings.each do |location| %>
+
+              var lat = <%= location.lat %>;
+              var lng = <%= location.lng %>;
+
+              locations.push({"lat":lat,"lng":lng})
+
+            <% end %>
+
+      </script>
+
+      <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+      </script>
+
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyCb7XJAeWDd5AXTQpyjeYIU93Gc7CfUpVk&callback=initMap">
+      </script>
+
+      <div class="text-center">
+      <%= link_to 'Back', :back, class:"btn btn-outline-primary" %>
+      </div>
+      <br>
+
+
 
     </div>
   </div>

@@ -34,8 +34,6 @@ class SessionsController < ApplicationController
       end
     end
 
-
-
     def destroy
       session[:seller_id] = nil || session[:buyer_id] = nil
       cookies.delete(:auth_token)
